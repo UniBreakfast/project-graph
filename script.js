@@ -7,12 +7,10 @@ const nodeTemplate = document.getElementById('node-template')
 
 presentNode(startNodeId)
 
-// nodeList.onclick = handleNodeClick
-
 window.onhashchange = handleHashChange
 
 function handleHashChange() {
-  const nodeId = +location.hash.slice(1)
+  const nodeId = +location.hash.slice(1) || startNodeId
 
   presentNode(nodeId)
 }
