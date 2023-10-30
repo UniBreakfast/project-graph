@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head id="head">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <!-- <link rel="stylesheet" href="reset.css"> -->
+  <!-- <link rel="stylesheet" href="base.css"> -->
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="graph-structure.js"></script>
+  <script src="script.js" defer></script>
+  <!-- <script type="module" src="app.js"></script> -->
+
+  <title>Project Graph</title>
+</head>
+
+<body id="body">
+  <h1>Project Graph</h1>
+  <h2 id="node-heading">
+    <b title="id: 15">project-graph</b>
+    <button>folder</button>
+  </h2>
+
+  <p>
+    The project-graph folder is the project root, it contains all the files of the project.
+  </p>
+
+  <ul id="related-node-list">
+<!--     
+    <li>
+      <span>contains</span>
+      <a href="node:1">graph-structure.js</a>
+      <button>file</button>
+    </li>
+    <li>
+      <span>contains</span>
+      <a href="node:17">index.html</a>
+      <button>file</button>
+    </li>
+    <li>
+      <span>contains</span>
+      <a href="node:19">style.css</a>
+      <button>file</button>
+    </li>
+-->
+    <template id="node-template">
+      <li>
+        <span>relation</span>
+        <a href="#id">label</a>
+        <button>type</button>
+      </li>
+    </template>
+  </ul>
+</body>
+
+</html>
