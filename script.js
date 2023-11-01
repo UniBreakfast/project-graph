@@ -1,6 +1,6 @@
 const startNodeId = +location.hash.slice(1) || 15
 const nodeHeading = document.getElementById('node-heading')
-const [nodeNameText, nodeTypeBtn] = nodeHeading.children
+const [nodeNameBold, nodeTypeBtn] = nodeHeading.children
 const nodeDescriptionParagraph = nodeHeading.nextElementSibling
 const nodeList = document.getElementById('related-node-list')
 const nodeTemplate = document.getElementById('node-template')
@@ -22,6 +22,9 @@ function presentNode(nodeId) {
 
   for (const descriptor of nodeDescriptors) {
     const { li, span, a, button } = useNodeTemplate()
+    const additionTypes = subTypes
+      .filter(key => key in descriptor)
+      .map(key => descriptor[key] === true ? key : descriptor[key])
 
     span.textContent = descriptor.relation
     a.href = `#${descriptor.id}`
@@ -29,12 +32,20 @@ function presentNode(nodeId) {
     a.textContent = descriptor.label
     button.textContent = descriptor.type
 
+    li.append(...additionTypes.map(type => {
+      const btn = button.cloneNode(true)
+
+      btn.textContent = type
+
+      return btn
+    }))
+    
     nodeItems.push(li)
   }
 
   nodeList.replaceChildren(...nodeItems)
-  nodeNameText.textContent = nodeDescriptor.label
-  nodeNameText.title = 'id: ' + nodeDescriptor.id
+  nodeNameBold.textContent = nodeDescriptor.label
+  nodeNameBold.title = 'id: ' + nodeDescriptor.id
   nodeTypeBtn.textContent = nodeDescriptor.type
   nodeDescriptionParagraph.textContent = nodeDescriptor.text
 }
